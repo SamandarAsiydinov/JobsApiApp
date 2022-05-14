@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MainFragment">
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/green"
+        app:stl_clickable="true"
+        app:stl_defaultTabBackground="?attr/selectableItemBackground"
+        app:stl_defaultTabTextAllCaps="true"
+        app:stl_defaultTabTextColor="@color/white"
+        app:stl_defaultTabTextHorizontalPadding="16dp"
+        app:stl_defaultTabTextMinWidth="0dp"
+        app:stl_defaultTabTextSize="16sp"
+        app:stl_distributeEvenly="true"
+        app:stl_dividerThickness="1dp"
+        app:stl_drawDecorationAfterTab="false"
+        app:stl_indicatorAlwaysInCenter="false"
+        app:stl_indicatorColor="@color/white"
+        app:stl_indicatorCornerRadius="2dp"
+        app:stl_indicatorGravity="bottom"
+        app:stl_indicatorInFront="false"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="3dp"
+        app:stl_indicatorWidth="auto"
+        app:stl_indicatorWithoutPadding="false"
+        app:stl_overlineColor="#4D000000"
+        app:stl_overlineThickness="0dp"
+        app:stl_titleOffset="24dp"
+        app:stl_underlineColor="#4D000000"
+        app:stl_underlineThickness="3dp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayout" />
+
+</RelativeLayout>
