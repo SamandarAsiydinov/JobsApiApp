@@ -1,19 +1,23 @@
 package com.example.remotejobapp.fragments
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.remotejobapp.activity.MainActivity
 import com.example.remotejobapp.adapters.RemoteJobAdapter
 import com.example.remotejobapp.databinding.FragmentRemoteJobBinding
+import com.example.remotejobapp.utils.Constants
 import com.example.remotejobapp.utils.toast
 import com.example.remotejobapp.viewmodel.RemoteJobViewModel
 
+@RequiresApi(Build.VERSION_CODES.M)
 class RemoteJobFragment : Fragment() {
 
     private var _binding: FragmentRemoteJobBinding? = null
@@ -37,13 +41,15 @@ class RemoteJobFragment : Fragment() {
     private fun initViews() {
         viewModel = (activity as MainActivity).viewModel
         remoteJobAdapter = RemoteJobAdapter()
-        setupRv()
-
-        fetchingData()
 
         binding.swipeContainer.setOnRefreshListener {
             binding.swipeContainer.isRefreshing = false
-
+        }
+        if (Constants.isNetworkAvailable(requireContext())) {
+            setupRv()
+            fetchingData()
+        } else {
+            toast("No internet connection")
         }
     }
 
